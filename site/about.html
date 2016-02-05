@@ -2,50 +2,15 @@
 <html>
 <head>
     <link href="ThreeRegion/webhome.css" rel="stylesheet" type="text/css">
-    <script src="clock.js"></script>
+
     <script type="text/javascript">
         window.onload = function () {
             parent.clearSideBar();
-            console.log(window.navigator.userAgent);
-
-            //Init call to clock. Will self call to update
-            clock();
         };
-
-        //set up to call every second
-
     </script>
-
-
-
 </head>
 <body>
-<!-- Digital Clock Updates text via id from /js/clock.js -->
-<div id="clock" style="width: 10rem">
-    <div id="hour" class="clock-digital">
-        12
-    </div>
-    :
-    <div id="minute" class="clock-digital">
-        12
-    </div>
-    :
-    <div id="second" class="clock-digital">
-        12
-    </div>
-    <div id="ampm" class="clock-digital">
-        am
-    </div>
-</div>
 
-
-<!-- Analog Clock using plain css to design the face and hands.
-/js/clock.js also drives this by updating css properties -->
-<div class="circle">
-    <div id="minutehand" class="hourhand"></div>
-    <div id="secondhand" class="minutehand"></div>
-    <div id="hourhand" class="secondhand"></div>
-</div>
 
         <h1 class="heading">Course Description</h1>
         <h2 class="heading">Objective</h2>

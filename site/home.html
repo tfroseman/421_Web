@@ -2,6 +2,7 @@
 <html>
 <head>
     <link href="/ThreeRegion/threeregion.css" rel="stylesheet" type="text/css">
+    <link href="clock.css" rel="stylesheet" type="text/css">
     <title>
         Web Applications At PSU Behrend
     </title>
@@ -24,7 +25,12 @@
         var sWin = (sID.contentWindow || sID.contentDocument);
         return sWin;
     }
+
+    window.onload = function () {
+        clock();
+    };
     </script>
+    <script src="clock.js"></script>
 </head>
 <body>
     <div id="navigationbar">
@@ -39,6 +45,32 @@
         <span class="topnavigationlink">
             <a href="/CloudChat/firstpage.html" target="cframe">CloudChat</a>
         </span>
+        <!-- Digital Clock Updates text via id from /js/clock.js -->
+        <div id="clock" style="width: 10rem; float: right;">
+            <div id="hour" class="clock-digital">
+                12
+            </div>
+            :
+            <div id="minute" class="clock-digital">
+                12
+            </div>
+            :
+            <div id="second" class="clock-digital">
+                12
+            </div>
+            <div id="ampm" class="clock-digital">
+                am
+            </div>
+        </div>
+
+
+        <!-- Analog Clock using plain css to design the face and hands.
+        /js/clock.js also drives this by updating css properties
+        <div class="circle">
+            <div id="minutehand" class="hourhand"></div>
+            <div id="secondhand" class="minutehand"></div>
+            <div id="hourhand" class="secondhand"></div>
+        </div>-->
     </div>
     <div id="sidenavigation">
         <iframe src="side.html" name = "sframe" id="sframe" frameborder="0" ></iframe>

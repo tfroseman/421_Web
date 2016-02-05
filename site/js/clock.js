@@ -24,9 +24,9 @@ function clock(){
     }
 
     //rotate the clock hands
-    document.getElementById("hourhand").style.transform = "rotate("+360/12*hour+"deg)";
-    document.getElementById("minutehand").style.transform = "rotate("+360/60*minute+"deg)";
-    document.getElementById("secondhand").style.transform = "rotate("+360/60*seconds+"deg)";
+    //document.getElementById("hourhand").style.transform = "rotate("+360/12*hour+"deg)";
+    //document.getElementById("minutehand").style.transform = "rotate("+360/60*minute+"deg)";
+    //document.getElementById("secondhand").style.transform = "rotate("+360/60*seconds+"deg)";
 
     //call clock() after 1sec and allow the previous call to finish.
     setTimeout(clock, 1000);

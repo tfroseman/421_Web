@@ -1,0 +1,64 @@
+.clock-digital{
+    display: inline;
+}
+
+.circle {
+    background: gainsboro;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+
+    width: 200px;
+    height: 200px;
+    /* width and height can be anything, as long as they're equal */
+
+
+}
+
+.minutehand{
+    background: black;
+    width: 5px;
+    height: 100px;
+
+    -ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+    transform: rotate(0deg);
+    margin: auto;
+
+    z-index: 1;
+    position: relative;
+    top: -75px;
+    transform-origin: bottom;
+}
+
+.hourhand{
+    background: gold;
+    width: 5px;
+    height: 75px;
+
+    -ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+    transform: rotate(0deg);
+
+    position: relative;
+    top: 25px;
+    margin: auto;
+    z-index: 3;
+    transform-origin: bottom;
+}
+
+.secondhand{
+    background: red;
+    width: 5px;
+    height: 50px;
+
+    -ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+    transform: rotate(0deg);
+
+    top: -125px;
+    position: relative;
+    margin: auto;
+    z-index: 3;
+    transform-origin: bottom;
+}

@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({
 
 //Used to allow express to find the js file
 app.use(express.static('js'));
+app.use(express.static('css'));
 
 app.set("jsonp callback", true);
 
