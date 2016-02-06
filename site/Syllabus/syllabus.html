@@ -4,21 +4,7 @@
     <title>SWENG 465: Web Services</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <script type="text/javascript">
-        window.onload = function () {
-            //An array of all the headings from the page
-            var headings = document.getElementsByTagName("h1")[0];
-            var body = document.body;
-.
-
-            //For each item insert a new link in the page that points to the heading href #
-            for (var i = 0; i < headings.length; i++) {
-                var link = "<a href=#"+headings.firstChild.nodeName+">"+headings.innerHTML+"</a>";
-                topofpage.insertBefore();
-
-            }
-        };
-    </script>
+    <script src="syllabus.js"></script>
     <style>
         ul {
             list-style-type: none;
@@ -89,6 +75,7 @@
         window.onload = function () {
             var sideFrameWin = parent.document.getElementById("sframe").contentWindow;
             sideFrameWin.location = "/Syllabus/side.html";
+            createTableofContents();
         };
     </script>
 </head>
@@ -381,7 +368,38 @@
             You need to do your course project step-by-step as we introduce new topics along the semester. Your project
             status will be periodically checked and a grade may be assigned.
         </p>
+        <p>Your individual grade for the team project will be your team grade times your teamwork performance factor,
+            where your teamwork performance factor is a real number between 0 and 1.0, calculated based on your group
+            peer’s evaluations that will be conducted at the end of the semester. Students who do not contribute to the
+            group project will suffer greatly. For example, if your team have earned a grade of 100, but your performance
+            factor is 0.5, your individual grade on the project part is 50. </p>
         <br/>
+    </div>
+
+    <h2>In Class Activities</h2>
+    <div id="inclassactivities">
+        <p>You should actively participate in the class activities and discussions. You can demonstrate your intellectual
+            engagement in a number of ways including speaking up in class, bringing interesting and relevant material in
+            to the class, and discussing the material being covered with peers.
+        </p>
+        <p>Typically, for each class, I will</p>
+        <ol>
+            <li>Post on <span class="highlight">StepStone</span> my ppt slides containing highlights and questions (make sure you know the answers to
+                the questions before you step out of the classroom)
+            </li>
+            <li>
+                You are advised to pay careful attention to the lecture and <span class="bold"">take notes</span> accordingly.
+            </li>
+        </ol>
+    </div>
+    <h2>Course Policies</h2>
+    <div id="course_policies">
+        <p>Be prepared to discuss and ask questions about the covered topics. Taking notes on the material you are
+            reading and reflecting on both the reading and these notes will help you to understand the issues, concepts
+            and techniques that are being presented. For every hour of class time, be prepared to budget about 3-4 hours
+            of out-of-class time. This estimate is a guide; the time which you actually need will vary by topic and
+            assignment.
+        </p>
     </div>
     <!--##########################################################################################-->
     <h1>Attendance Policy</h1>
