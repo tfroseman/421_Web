@@ -9,8 +9,9 @@ function createTableofContents(){
     //TODO All links are at the bottom of the page.
     //
     //An array of all the headings from the page
-    var iframe = document.getElementById('cframe');
-    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    //var iframe = document.getElementById('cframe');
+    //var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var innerDoc = document;
     var headings = innerDoc.getElementsByTagName("h1");
     var anchor = document.createElement("a");
 
@@ -23,5 +24,5 @@ function createTableofContents(){
         anchor.innerHTML = headings[i].innerHTML;
         console.log(anchor);
         innerDoc.body.insertBefore(anchor ,innerDoc.getElementsByTagName("pageTitleHeader")[0]);
-    }
+}
 }
