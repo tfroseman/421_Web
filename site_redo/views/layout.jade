@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    block head
+      link(rel='stylesheet', href='/stylesheets/threeregion.css')
+  body
+    div#navigationbar
+      a(href='/'): img(src='/images/logo.png' alt='webapplication logo')
+      span.topnavigationlink: a(href='about.html') About
+      span.topnavigationlink: a#syllabus(href='/Syllabus/syllabus.html') Syllabus
+      span.topnavigationlink: a(href='CloudChat/firstpage.html') Cloudchat
+    div#sidenavigation
+      block sidenav
+    div#content
+      block mainbody
+    div
+      hr
+      p#footer &copy;webapplication.psu.edu 2016
