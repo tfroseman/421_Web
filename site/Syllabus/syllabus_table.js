@@ -1,6 +1,3 @@
-/**
- * Created by thomasroseman on 2/5/16.
- */
 
 function createTableofContents(){
     // WHY IS THE PAGE LOADED IN AN IFRAME!?!?!?!?
@@ -14,15 +11,17 @@ function createTableofContents(){
     var innerDoc = document;
     var headings = innerDoc.getElementsByTagName("h1");
     var anchor = document.createElement("a");
+    var paragraph = document.createElement("p");
 
 
     //For each item insert a new link in the page that points to the heading href #
     for (var i = 0; i < headings.length; i++) {
-        var anchor = document.createElement("a");
+        anchor = document.createElement("a");
+        paragraph = document.createElement("p");
         anchor.setAttribute("href", "#"+headings[i].nextSibling.nextSibling.id);
-        //innerDoc.getElementsByTagName("h1")[0].nextSibling.nextSibling.id
-        anchor.innerHTML = headings[i].innerHTML;
-        console.log(anchor);
-        innerDoc.body.insertBefore(anchor ,innerDoc.getElementsByTagName("pageTitleHeader")[0]);
+        anchor.innerHTML = (i+1).toString() + " " + headings[i].innerHTML;
+        paragraph.appendChild(anchor);
+        console.log(paragraph);
+        innerDoc.body.insertBefore(paragraph ,innerDoc.getElementById("contents"));
 }
 }
