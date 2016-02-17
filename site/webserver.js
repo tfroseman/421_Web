@@ -48,6 +48,40 @@ app.get('/side.html', function (req, res) {
     });
 });
 
+app.route('/EvalTool/quiz')
+    .get(function(req, res){
+
+        res.send("Quiz");
+
+    })
+    .post(function(req, res){
+        var answer = req.body.answer;
+        var current_question = req.body.question;
+        console.log(answer);
+        console.log(current_question);
+        console.log(req.params);
+        res.send("Thankyou");
+    })
+    .put(function(req, res){
+
+    });
+//Send values over uri can be grabbed as seen bellow
+app.route('/EvalTool/quiz/:quiz_id/:answer')
+    .get(function(req, res){
+        //Not really needed
+        res.send("Quiz");
+    })
+    .post(function(req, res){
+        //Grab the values when posted
+        console.log(req.params);
+        console.log(req.params.quiz_id);
+        res.send('Thankyou');
+    })
+    .put(function(req, res){
+        //Again not needed
+    });
+
+
 /**app.get('/Syllabus/syllabus.html', function(req, res){
 	fs.readFile('./Syllabus/syllabus.html', 'utf8', function (err,data) {
 		if (err) {
