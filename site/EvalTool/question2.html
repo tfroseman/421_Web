@@ -2,9 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Question 2</title>
+    <title> Question 2</title>
+    <script src="/js/sessionstorage.js"></script>
+    <script>window.onload = function () { restore_answer(); }</script>
 </head>
-<body>
-
+<body >
+<div>
+    <form id="q2" name="Question 2">
+        <h1>Question 2</h1>
+        <p>How do you create a function in javascript?</p>
+        <div id="questions">
+            <label>
+                <input type="radio" name="q"
+                       value="1">
+            </label>function "name" (){}<br>
+            <label>
+                <input type="radio" name="q"
+                       value="2">
+            </label>function "name" {}<br>
+            <label>
+                <input type="radio" name="q"
+                       value="3">
+            </label>function "name" (){};<br>
+            <label>
+                <input type="radio" name="q"
+                       value="4">
+            </label>Call tech support<br>
+        </div>
+        <button type="button" onclick="store_answer()">Previous</button>
+        <button type="button" onclick="store_answer()">Next</button>
+    </form>
+</div>
 </body>
 </html>

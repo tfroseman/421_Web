@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Question 1</title>
+    <script src="/js/SessionStorage.js"></script>
 </head>
 <body>
 <div class="container">
-    <div id="nav_controller">
-        <button>Previous Page</button>
-        <button>Next Page</button>
-    </div>
-    <div>
-        <h1>Question 1</h1>
-        <p>How do you write "Hello world in an alert box?</p>
-        <label>Write your code here
-            <textarea></textarea>
-        </label>
-    </div>
+    <form method="GET" action="/EvalTool/">
+        <div id="nav_controller">
+            <button>Previous Page</button>
+            <button>Next Page</button>
+        </div>
+        <div class="question_body">
+            <div id="question1">
+                <h1>Question 1</h1>
+                <p>How do you write "Hello world in an alert box?</p>
+                <label>Write your code here<br>
+                    <textarea></textarea>
+                </label>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>

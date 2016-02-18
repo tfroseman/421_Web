@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Email Results</title>
+</head>
+<body>
+<div id="contact">
+    <h1>Evaluation Feedback</h1>
+    <form action="/EvalTool/sendemail" method="post">
+        <fieldset>
+            <label for="fname">From Name:</label>
+            <input type="text" id="fname" name="fname" placeholder="Senders Name"/>
+            <br>
+            <label for="femail">From Email:</label>
+            <input type="email" id="femail" name="femail" placeholder="Senders Email"/>
+            <br>
+            <hr>
+            <label for="tname">To Name:</label>
+            <input type="text" id="tname" name="tname" placeholder="Enter recipients full name"/>
+            <br>
+            <label for="temail">To Email:</label>
+            <input type="email" id="temail" name="temail" placeholder="Enter recipients email address"/>
+            <br>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" placeholder="Enter subject"/>
+
+            <input type="submit" value="Send Email"/>
+        </fieldset>
+    </form>
+
+    <div id="results">
+        <p>Your results are: </p><span id="result"></span>/10
+    </div>
+</div>
+</body>
+</html>
