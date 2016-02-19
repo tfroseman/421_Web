@@ -13,6 +13,7 @@ var forms = document.getElementsByTagName("form"); //gets form name as an array
 /**
  * On moving a page store the user value
  */
+var score;
 function store_answer() {
     //Move through the radio buttons
     for (var i = 0; i < radios.length; i++) {
@@ -34,7 +35,33 @@ function restore_answer() {
 
 
 //Post data to server function
-function post() {
+function send_answers() {
+    var data = {
+        "answers": [
+            sessionStorage.getItem('q1'),
+            sessionStorage.getItem('q2'),
+            sessionStorage.getItem('q3'),
+            sessionStorage.getItem('q4'),
+            sessionStorage.getItem('q5'),
+            sessionStorage.getItem('q6'),
+            sessionStorage.getItem('q7'),
+            sessionStorage.getItem('q8'),
+            sessionStorage.getItem('q9'),
+            sessionStorage.getItem('q10')
+    ]};
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "/EvalTool/quiz");
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(JSON.stringify(data));
+    //console.log(JSON.parse(request.responseText));
+
+    request.onreadystatechange = function(){
+    if (request.readyState == 4 && request.status == 200) {
+        score = JSON.parse(request.responseText);
+        document.getElementById('user_score').innerHTML = score.score + "/10";
+        document.getElementById('email').setAttribute("href","/EvalTool/email/"+score.score);
+    }};
 
 }
 

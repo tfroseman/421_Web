@@ -37,9 +37,9 @@
             <a onclick="store_answer()" href="/EvalTool/quiz/question9" class="button">Previous</a>
         </div>
         <div>
-            <form action="/EvalTool/quiz" method="POST">
-                <a class="button">Submit</a>
-            </form>
+            <a class="button" onclick="send_answers()">Submit</a>
+            <p id="user_score">/10</p>
+            <a class="button" id="email" onclick="" href="/EvalTool/email/">View Results and Email</a>
         </div>
     </form>
 </div>

@@ -1,6 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
 
 var ChatServer = require('./CloudChat/ChatServer');
 var syllabus = require('./Syllabus/syllabus');
@@ -77,20 +78,21 @@ app.route('/EvalTool/quiz')
 
     })
     .post(function (req, res) {
+        console.log("Post request");
         var user_answers = req.body;
-        var correctanswers = [0,1,3,2,2,2,3,1,1,3];
+        var correctanswers = [0, 1, 3, 2, 2, 2, 3, 1, 1, 3];
         var score = 0;
-
+        console.log(req.body);
         console.log(user_answers.answers);
 
-        for(var i = 0; i < correctanswers.length; i++){
+        for (var i = 0; i < correctanswers.length; i++) {
             if (user_answers.answers[i] == correctanswers[i]) {
-                score = score+1;
+                score = score + 1;
             }
         }
 
-        res.render('EvalTool/email', {user_score : score});
-
+        //res.render('EvalTool/email', {user_score : score});
+        res.json({"score": score});
     });
 //Send values back over a post request in the body
 app.route('/EvalTool/quiz/:question')
@@ -141,6 +143,35 @@ app.route('/EvalTool/quiz/:quiz_id/:answer')
     })
     .put(function (req, res) {
         //Again not needed
+    });
+
+app.route('/EvalTool/email/:score?')
+    .get(function (req, res) {
+        console.log(req.params.score);
+        res.render('email', {"user_score": req.params.score});
+    })
+    .post(function (req, res) {
+
+
+        // create reusable transporter object using the default SMTP transport
+        //Insert custom smtp server info here
+        var transporter = nodemailer.createTransport('');
+
+        // setup e-mail data with unicode symbols
+        var mailOptions = {
+            from: req.body.femail, // sender address
+            to: req.body.fname, // list of receivers
+            subject: req.body.subject, // Subject line
+            text: 'i Scored' // plaintext body
+        };
+
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: ' + info.response);
+        });
     });
 
 
