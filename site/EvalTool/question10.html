@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script src="/js/sessionstorage.js"></script>
+    <script src="/sessionstorage.js"></script>
+    <script>window.onload = function () {
+        restore_answer();
+    }</script>
+    <link href="/custom.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div>
@@ -29,8 +33,14 @@
             </label>InLine<br>
         </div>
         <br>
-        <button type="button">Previous</button>
-        <button type="button">Submission</button>
+        <div>
+            <a onclick="store_answer()" href="/EvalTool/quiz/question9" class="button">Previous</a>
+        </div>
+        <div>
+            <form action="/EvalTool/quiz" method="POST">
+                <a class="button">Submit</a>
+            </form>
+        </div>
     </form>
 </div>
 </body>

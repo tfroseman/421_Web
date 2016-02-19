@@ -5,6 +5,8 @@
     <title> Question 2</title>
     <script src="/js/sessionstorage.js"></script>
     <script>window.onload = function () { restore_answer(); }</script>
+    <script src="/sessionstorage.js"></script>
+    <link href="/custom.css" rel="stylesheet" type="text/css">
 </head>
 <body >
 <div>
@@ -29,8 +31,12 @@
                        value="4">
             </label>Call tech support<br>
         </div>
-        <button type="button" onclick="store_answer()">Previous</button>
-        <button type="button" onclick="store_answer()">Next</button>
+        <div>
+            <a onclick="store_answer()" href="/EvalTool/quiz/question1" class="button">Previous</a>
+        </div>
+        <div>
+            <a onclick="store_answer()" href="/EvalTool/quiz/question3" class="button">Next</a>
+        </div>
     </form>
 </div>
 </body>

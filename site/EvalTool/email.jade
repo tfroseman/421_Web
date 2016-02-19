@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+    head
+    body
+        h1 Evaluation Feedback
+        form(action="/EvalTool/email", method="post")
+            input(type="text",id="fname",name="fname", placeholder="Senders Name")
+            br
+            input(type="email",id="femail",name="femail", placeholder="Senders Email")
+            br
+            input(type="text",id="tname", name="tname", placeholder="Recipients Name")
+            br
+            input(type="email", id="temail", name="temail", placeholder="Recipients email")
+            br
+            input(type="text",id="subjet", name="subjet", placeholder="Enter Subject")
+            input(type="subject", value="Send Email")
+        div#results
+            p Score: #{user_score}/10

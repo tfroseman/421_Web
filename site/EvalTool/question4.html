@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script src="../js/SessionStorage.js"></script>
+    <script src="/sessionstorage.js"></script>
+    <script>window.onload = function () { restore_answer(); }</script>
+    <link href="/custom.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div>
@@ -19,8 +21,12 @@
                    value="2">
         </label> False<br>
         <br>
-        <button type="button">Previous</button>
-        <button type="button">Next</button>
+        <div>
+            <a onclick="store_answer()" href="/EvalTool/quiz/question3" class="button">Previous</a>
+        </div>
+        <div>
+            <a onclick="store_answer()" href="/EvalTool/quiz/question5" class="button">Next</a>
+        </div>
     </form>
 </div>
 </body>
