@@ -22,7 +22,12 @@ app.use(express.static('js'));
 app.use(express.static('css'));
 
 app.set("jsonp callback", true);
+app.set('view engine', 'jade');
 
+
+/**
+ * Setting up routes: some return full html files. Others will handle requests better by not neededing full page loads. Some will return jade files
+ */
 app.get('/', function (req, res) {
     fs.readFile('home.html', 'utf8', function (err, data) {
         if (err) {
@@ -49,35 +54,92 @@ app.get('/side.html', function (req, res) {
 });
 
 app.route('/EvalTool/quiz')
-    .get(function(req, res){
+    .get(function (req, res) {
+        var options = {
+            root: 'EvalTool/',
+            dotfiles: 'deny',
+            headers: {
+                'x-timestamp': Date.now(),
+                'x-sent': true
+            }
+        };
 
-        res.send("Quiz");
+        var fileName = 'question1.html';
+        res.sendFile(fileName, options, function (err) {
+            if (err) {
+                console.log(err);
+                res.status(err.status).end();
+            }
+            else {
+                console.log('Sent:', fileName);
+            }
+        });
 
     })
-    .post(function(req, res){
-        var answer = req.body.answer;
-        var current_question = req.body.question;
-        console.log(answer);
-        console.log(current_question);
-        console.log(req.params);
-        res.send("Thankyou");
-    })
-    .put(function(req, res){
+    .post(function (req, res) {
+        var user_answers = req.body;
+        var correctanswers = [0,1,3,2,2,2,3,1,1,3];
+        var score = 0;
+
+        console.log(user_answers.answers);
+
+        for(var i = 0; i < correctanswers.length; i++){
+            if (user_answers.answers[i] == correctanswers[i]) {
+                score = score+1;
+            }
+        }
+
+        res.render('EvalTool/email', {user_score : score});
 
     });
+//Send values back over a post request in the body
+app.route('/EvalTool/quiz/:question')
+    .get(function (req, res) {
+        var options = {
+            root: 'EvalTool/',
+            dotfiles: 'deny',
+            headers: {
+                'x-timestamp': Date.now(),
+                'x-sent': true
+            }
+        };
+
+        var fileName = req.params.question;
+        res.sendFile(fileName + '.html', options, function (err) {
+            if (err) {
+                console.log(err);
+                res.status(err.status).end();
+            }
+            else {
+                console.log('Sent:', fileName + '.html');
+            }
+        });
+
+    })
+    .post(function (req, res) {
+        var answer = req.body.answer;
+        var current_question = req.body.current_question;
+        console.log(answer);
+        console.log(current_question);
+        res.send("Thankyou");
+    })
+    .put(function (req, res) {
+
+    });
+
 //Send values over uri can be grabbed as seen bellow
 app.route('/EvalTool/quiz/:quiz_id/:answer')
-    .get(function(req, res){
+    .get(function (req, res) {
         //Not really needed
         res.send("Quiz");
     })
-    .post(function(req, res){
+    .post(function (req, res) {
         //Grab the values when posted
-        console.log(req.params);
-        console.log(req.params.quiz_id);
+        //console.log(req.params);
+        //console.log(req.params.quiz_id);
         res.send('Thankyou');
     })
-    .put(function(req, res){
+    .put(function (req, res) {
         //Again not needed
     });
 
@@ -108,7 +170,6 @@ function threeregion(req, res) {
 
 app.get('/CloudChat/*', ChatServer.gettool);
 app.get('/Syllabus/*', syllabus.gettool);
-
 
 app.listen(8080, function () {
     console.log('Server running at http://127.0.0.1:8080/');
