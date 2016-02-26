@@ -83,32 +83,13 @@ app.route('/EvalTool/quiz')
 //Send values back over a post request in the body
 app.route('/EvalTool/quiz/:question?')
     .get(function (req, res) {
-        /*var options = {
-         root: 'EvalTool/',
-         dotfiles: 'deny',
-         headers: {
-         'x-timestamp': Date.now(),
-         'x-sent': true
-         }
-         };
-
-         var fileName = req.params.question;
-         res.sendFile(fileName + '.html', options, function (err) {
-         if (err) {
-         console.log(err);
-         res.status(err.status).end();
-         }
-         else {
-         console.log('Sent:', fileName + '.html');
-         }
-         });*/
         if (req.params.question == undefined) {
             res.render('EvalTool/question1');
         } else {
             res.render('EvalTool/' + req.params.question);
         }
-
     });
+
 
 app.route('/EvalTool/email/:score?')
     .get(function (req, res) {
@@ -129,15 +110,18 @@ app.route('/EvalTool/email/:score?')
         });
     });
 
+
 //Get the main page and side for quiz
 app.route('/EvalTool/:side?')
     .get(function (req, res) {
         if (req.params.side == undefined) {
-            res.render('EvalTool/index');
+            res.render('EvalJSONP/index');
         } else {
-            res.render('EvalTool/side');
+            res.render('EvalJSONP/side');
         }
     });
+
+
 
 /**app.get('/Syllabus/syllabus.html', function(req, res){
 	fs.readFile('./Syllabus/syllabus.html', 'utf8', function (err,data) {
@@ -147,7 +131,6 @@ app.route('/EvalTool/:side?')
 		res.send(data);
 	});
 });*/
-
 
 app.get('/ThreeRegion/*', threeregion);
 function threeregion(req, res) {
