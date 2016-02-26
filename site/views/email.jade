@@ -1,18 +1,47 @@
 doctype html
 html(lang="en")
     head
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        link(href="/bootstrap/css/bootstrap.min.css", rel="stylesheet", type="text/css")
+        script(src='/quiz.js')
     body
-        h1 Evaluation Feedback
-        form(action="/EvalTool/email", method="post")
-            input(type="text",id="fname",name="fname", placeholder="Senders Name")
-            br
-            input(type="email",id="femail",name="femail", placeholder="Senders Email")
-            br
-            input(type="text",id="tname", name="tname", placeholder="Recipients Name")
-            br
-            input(type="email", id="temail", name="temail", placeholder="Recipients email")
-            br
-            input(type="text",id="subject", name="subject", placeholder="Enter Subject")
-            input(type="submit", value="Send Email")
+        .container-fluid
+            .form-group
+                form(action="/EvalTool/email", method="post")
+                    .row
+                        .col-lg-12.col-md-12.col-sm-12
+                            h1 Evaluation Feedback
+                    .row
+                        .form-group
+                            .col-lg-3.col-sm-12
+                                label Sending Name
+                                input.form-control(type="text",id="fname",name="fname", placeholder="Senders Name")
+
+
+                            .col-lg-3.col-sm-12
+                                label Sending Name
+                                input.form-control(type="email",id="femail",name="femail", placeholder="Senders Email")
+
+                    .row
+                        .form-group
+                            .col-lg-3.col-sm-12
+                                label Recipients Name
+                                input.form-control(type="text",id="tname", name="tname", placeholder="Recipients Name")
+
+                            .col-lg-3.col-sm-12
+                                label Recipients Email
+                                input.form-control(type="email", id="temail", name="temail", placeholder="Recipients email")
+
+                    .row
+                        .form-group
+                            .col-lg-6.col-sm-12
+                                label Subject
+                                input.form-control(type="text",id="subject", name="subject", placeholder="Enter Subject")
+                                input.form-control(type="hidden", id="score", name="score", value="#{user_score}")
+                    .row
+                        .form-group
+                            .col-lg-3.col-sm-12
+                                input.btn.btn-default(type="submit", value="Send Email")
+
         div#results
-            p Score: #{user_score} /10
+            h3 Score: #{user_score} /10

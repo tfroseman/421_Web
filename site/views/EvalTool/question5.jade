@@ -1,0 +1,21 @@
+extends question_layout
+
+block question
+    #question5
+        h1 Question 5
+        p When declaring a variable you have type.
+        .radio#questions
+            label
+                input(type="radio", name="q", value="1")
+                | True
+            br
+
+            label
+                input(type="radio", name="q", value="2")
+                | False
+            br
+
+
+block nav
+    a.btn.btn-default(onclick="store_answer()", href="/EvalTool/quiz/question4") Previous
+    a.btn.btn-primary(onclick="store_answer()", href="/EvalTool/quiz/question6") Next

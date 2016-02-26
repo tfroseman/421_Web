@@ -1,0 +1,27 @@
+extends question_layout
+
+block question
+    div#question3
+        h1 Question 3
+        p How do you create a multi-line comment?
+        .radio#questions
+            label
+                input(type="radio", name="q", value="1")
+                |//
+            br
+
+            label
+                input(type="radio", name="q", value="2")
+                |comment: :end comment
+            br
+            label
+
+                input(type="radio", name="q", value="3")
+                |/* */
+            br
+            label
+
+                input(type="radio", name="q", value="4")
+                |Take a sharpie to the monitor
+            br
+

@@ -18,17 +18,16 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-//Used to allow express to find the js file
+// Used to allow express to find the js file
 app.use(express.static('js'));
 app.use(express.static('css'));
 
-app.set("jsonp callback", true);
-app.set('view engine', 'jade');
+// Set some express variables
+app.set("jsonp callback", true); //Allow for jsonp responses
+app.set('view engine', 'jade'); // Using jade templates
 
 
-/**
- * Setting up routes: some return full html files. Others will handle requests better by not neededing full page loads. Some will return jade files
- */
+// Return default index
 app.get('/', function (req, res) {
     fs.readFile('home.html', 'utf8', function (err, data) {
         if (err) {
@@ -37,6 +36,8 @@ app.get('/', function (req, res) {
         res.send(data);
     });
 });
+
+// About.html page controller
 app.get('/about.html', function (req, res) {
     fs.readFile('about.html', 'utf8', function (err, data) {
         if (err) {
@@ -45,6 +46,8 @@ app.get('/about.html', function (req, res) {
         res.send(data);
     });
 });
+
+// Generic side controller
 app.get('/side.html', function (req, res) {
     fs.readFile('side.html', 'utf8', function (err, data) {
         if (err) {
@@ -54,29 +57,11 @@ app.get('/side.html', function (req, res) {
     });
 });
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Quiz Routes with Email
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.route('/EvalTool/quiz')
-    .get(function (req, res) {
-        var options = {
-            root: 'EvalTool/',
-            dotfiles: 'deny',
-            headers: {
-                'x-timestamp': Date.now(),
-                'x-sent': true
-            }
-        };
-
-        var fileName = 'question1.html';
-        res.sendFile(fileName, options, function (err) {
-            if (err) {
-                console.log(err);
-                res.status(err.status).end();
-            }
-            else {
-                console.log('Sent:', fileName);
-            }
-        });
-
-    })
     .post(function (req, res) {
         console.log("Post request");
         var user_answers = req.body;
@@ -94,55 +79,35 @@ app.route('/EvalTool/quiz')
         //res.render('EvalTool/email', {user_score : score});
         res.json({"score": score});
     });
+
 //Send values back over a post request in the body
-app.route('/EvalTool/quiz/:question')
+app.route('/EvalTool/quiz/:question?')
     .get(function (req, res) {
-        var options = {
-            root: 'EvalTool/',
-            dotfiles: 'deny',
-            headers: {
-                'x-timestamp': Date.now(),
-                'x-sent': true
-            }
-        };
+        /*var options = {
+         root: 'EvalTool/',
+         dotfiles: 'deny',
+         headers: {
+         'x-timestamp': Date.now(),
+         'x-sent': true
+         }
+         };
 
-        var fileName = req.params.question;
-        res.sendFile(fileName + '.html', options, function (err) {
-            if (err) {
-                console.log(err);
-                res.status(err.status).end();
-            }
-            else {
-                console.log('Sent:', fileName + '.html');
-            }
-        });
+         var fileName = req.params.question;
+         res.sendFile(fileName + '.html', options, function (err) {
+         if (err) {
+         console.log(err);
+         res.status(err.status).end();
+         }
+         else {
+         console.log('Sent:', fileName + '.html');
+         }
+         });*/
+        if (req.params.question == undefined) {
+            res.render('EvalTool/question1');
+        } else {
+            res.render('EvalTool/' + req.params.question);
+        }
 
-    })
-    .post(function (req, res) {
-        var answer = req.body.answer;
-        var current_question = req.body.current_question;
-        console.log(answer);
-        console.log(current_question);
-        res.send("Thankyou");
-    })
-    .put(function (req, res) {
-
-    });
-
-//Send values over uri can be grabbed as seen bellow
-app.route('/EvalTool/quiz/:quiz_id/:answer')
-    .get(function (req, res) {
-        //Not really needed
-        res.send("Quiz");
-    })
-    .post(function (req, res) {
-        //Grab the values when posted
-        //console.log(req.params);
-        //console.log(req.params.quiz_id);
-        res.send('Thankyou');
-    })
-    .put(function (req, res) {
-        //Again not needed
     });
 
 app.route('/EvalTool/email/:score?')
@@ -152,28 +117,27 @@ app.route('/EvalTool/email/:score?')
     })
     .post(function (req, res) {
 
+        console.log(req.body);
 
-        // create reusable transporter object using the default SMTP transport
-        //Insert custom smtp server info here
-        var transporter = nodemailer.createTransport('');
-
-        // setup e-mail data with unicode symbols
-        var mailOptions = {
-            from: req.body.femail, // sender address
-            to: req.body.fname, // list of receivers
-            subject: req.body.subject, // Subject line
-            text: 'i Scored' // plaintext body
-        };
-
-        // send mail with defined transport object
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                return console.log(error);
-            }
-            console.log('Message sent: ' + info.response);
+        //Use unsecureda mail creation on default port 25
+        var transporter = nodemailer.createTransport();
+        transporter.sendMail({
+            from: req.body.fname,
+            to: req.body.tname,
+            subject: req.body.subject,
+            text: req.body.score
         });
     });
 
+//Get the main page and side for quiz
+app.route('/EvalTool/:side?')
+    .get(function (req, res) {
+        if (req.params.side == undefined) {
+            res.render('EvalTool/index');
+        } else {
+            res.render('EvalTool/side');
+        }
+    });
 
 /**app.get('/Syllabus/syllabus.html', function(req, res){
 	fs.readFile('./Syllabus/syllabus.html', 'utf8', function (err,data) {
@@ -198,7 +162,6 @@ function threeregion(req, res) {
         }
     });
 }
-
 app.get('/CloudChat/*', ChatServer.gettool);
 app.get('/Syllabus/*', syllabus.gettool);
 

@@ -1,0 +1,30 @@
+extends question_layout
+
+block question
+    #question1
+        h1 Question 1
+        p How would you write an alert box
+        .radio#questions
+            label
+                input(type='radio', name="q", value="1")
+                | function "name" (){}
+            br
+
+            label
+                input(type="radio", name="q", value="2")
+                | function "name" {}
+            br
+
+            label
+                input(type="radio", name="q", value="3")
+                | function "name" (){};
+            br
+
+            label
+                input(type="radio", name="q", value="4")
+                | Call tech support
+            br
+
+block nav
+    a.btn.btn-primary(onclick="store_answer()", href="/EvalTool/quiz/question2") Next
+

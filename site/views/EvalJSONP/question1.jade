@@ -1,0 +1,28 @@
+extends question_layout
+
+block question
+    #question1
+        h1 Question 1
+        p How would you write an alert box
+        .radio#questions
+            label
+                input(type='radio', name="q", value="1")
+                | alert("Message");
+            br
+
+            label
+                input(type="radio", name="q", value="2")
+                | warn.message = "Message"; warn.show();
+            br
+
+            label
+                input(type="radio", name="q", value="3")
+                | Request a new page from the server and display as a modal
+            br
+
+            label
+                input(type="radio", name="q", value="4")
+                | Have user disable javascript
+            br
+
+

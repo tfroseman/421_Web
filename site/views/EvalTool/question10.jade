@@ -1,0 +1,28 @@
+extends question_layout
+
+block question
+    #question10
+        h1 Question 10
+        p Where are cookies normally stored?
+        .radio#questions
+            label
+                input(type="radio", name="q", value="1")
+                | Java
+            br
+            label
+                input(type="radio", name="q", value="2")
+                | Script Kiddie
+            br
+            label
+                input(type="radio", name="q", value="3")
+                | LiveScript
+            br
+            label
+                input(type="radio", name="q", value="4")
+                | InLine
+            br
+
+block nav
+    a.btn.btn-default(onclick="store_answer();", href="/EvalTool/quiz/question9") Previous
+    //a.btn.btn-default(onclick="send_answers()") Submit
+    a.btn.btn-warning(onclick="store_answer(); prep_for_post();", href='/EvalTool/email') View Results and Email

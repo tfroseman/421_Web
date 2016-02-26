@@ -1,0 +1,30 @@
+extends question_layout
+
+block question
+    div#question2
+        h1 Question 2
+        p How do you create a function in javascript?
+        .radio#questions
+            label
+                input(type='radio', name="q", value="1")
+                | function "name" (){}
+            br
+
+            label
+                input(type="radio", name="q", value="2")
+                | function "name" {}
+            br
+
+            label
+                input(type="radio", name="q", value="3")
+                | function "name" (){};
+            br
+
+            label
+                input(type="radio", name="q", value="4")
+                | Call tech support
+            br
+
+block nav
+    a.btn.btn-default(onclick="store_answer()", href="/EvalTool/quiz/question1") Previous
+    a.btn.btn-primary(onclick="store_answer()", href="/EvalTool/quiz/question3") Next

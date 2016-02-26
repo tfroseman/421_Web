@@ -1,0 +1,21 @@
+extends question_layout
+
+block question
+    #question6
+        h1 Question 6
+        p True or false: You can read/write a file using Javascript.
+        .radio#questions
+            label
+                input(type="radio", name="q", value="1")
+                | True
+            br
+
+            label
+                input(type="radio", name="q", value="2")
+                | False
+            br
+
+
+block nav
+    a.btn.btn-default(onclick="store_answer()", href="/EvalTool/quiz/question5") Previous
+    a.btn.btn-primary(onclick="store_answer()", href="/EvalTool/quiz/question7") Next

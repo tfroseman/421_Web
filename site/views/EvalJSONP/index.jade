@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+    head
+        link(href="/bootstrap/css/bootstrap.min.css", rel="stylesheet", type="text/css")
+        script.
+            window.onload = function () {
+                var sideFrameWin = parent.document.getElementById("sframe").contentWindow;
+                sideFrameWin.location = "/EvalTool/side"
+            }
+    body
+        .container
+            .row
+                h1 Welcome to Eval Tool
+                p This is the eval tool section of this site. To begin use the menu presented on the left. Due to the
+                | of use iframes do not use the browser forward, back or refresh buttons as this could cause unexpected
+                | results on some browsers.
+
+
+    script(src="/quiz.js")
