@@ -1,0 +1,25 @@
+extends ../layout
+block append js
+    script(type='text/javascript').
+        function onSubmit() {
+        }
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script.
+        window.onload = function () {
+            //use an external service to get the client machine's IP
+            //This will be used to generate a unique user ID
+            $.get("http://ipinfo.io", function (response) {
+                parent.myIP = response.ip;
+                //console.log(parent.myIP);
+            }, "jsonp");
+
+        };
+
+block side_nav
+    #sidenavigation
+        #sframe
+            include side
+block content
+    #content
+        #cframe
+            include content

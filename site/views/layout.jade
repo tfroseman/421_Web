@@ -1,0 +1,68 @@
+doctype html
+html(lang='en')
+    head
+        block css
+            link(href='webhome.css', rel='stylesheet', type='text/css')
+            link(href='threeregion.css', rel='stylesheet', type='text/css')
+            link(href='clock.css', rel='stylesheet', type='text/css')
+        block js
+            script(type='text/javascript').
+                function modifySideBar(node) {
+                    getSideFrameDoc().body.appendChild(node);
+                    //sDoc.body.style.backgroundColor = "red";
+                }
+                function clearSideBar() {
+                    var body = getSideFrameDoc().body;
+                    while (body && body.firstChild) body.removeChild(body.firstChild);
+                }
+                function getSideFrameDoc() {
+                    var sDoc = getSideFrameWin();
+                    if (sDoc.document) {
+                        sDoc = sDoc.document;
+                    }
+                    return sDoc;
+                }
+                function getSideFrameWin() {
+                    var sID = document.getElementById("sframe");
+                    return (sID.contentWindow || sID.contentDocument);
+                }
+
+                window.onload = function () {
+                    clock();
+                };
+
+            script(src='clock.js')
+
+        block title
+            title Web Applications At PSU Behrend
+
+    body
+        #navigationbar
+            a(href='/')
+                img(src='logo.png', alt='webapplication logo')
+
+            span.topnavigationlink
+                a(href='/', target='cframe', id='about') About
+            span.topnavigationlink
+                a(href='/syllabus', target='cframe', id='syllabus') Syllabus
+            span.topnavigationlink
+                a(href='/chat', target='cframe', id='cloudchat') CloudChat
+            span.topnavigationlink
+                a(href='/evaltool', id='evaltool') EvalTool
+
+            #clock(style={width:'10rem', float:'right'})
+                #hour.clock-digital 12
+                |:
+                #minute.clock-digital 12
+                |:
+                #second.clock-digital 12
+                |:
+                #ampm.clock-digital am
+
+
+        block side_nav
+        block content
+
+        #pagefooter
+            hr
+            p(id='footer') &copy;webapplication.psu.edu 2016
