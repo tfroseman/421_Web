@@ -1,0 +1,16 @@
+extends ../layout
+block append js
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script.
+        window.onload = function () {
+
+        };
+
+block side_nav
+    #sidenavigation
+        #sframe
+            include side
+block content
+    #content
+        #cframe
+            include content
