@@ -100,6 +100,10 @@ app.route('/EvalTool/:side?')
 app.route('/chat').get(function(req,res){
     res.render('CloudChat/index');
 });
+
+app.route('/schedule').get(function(req,res){
+    res.render('Schedule/index');
+});
 app.get('/Syllabus/*', syllabus.gettool);
 
 app.listen(8080, function () {
