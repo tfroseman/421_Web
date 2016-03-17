@@ -1,22 +1,19 @@
+var compression = require('compression');
 var express = require('express');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 
-var ChatServer = require('./CloudChat/ChatServer');
-var syllabus = require('./Syllabus/syllabus');
+var schedule = require('./schedule');
 
 //setup the root path
 var root = __dirname;
-ChatServer.gettool.root = root;
-syllabus.gettool.root = root;
 
 var app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 
+app.use(compression());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Used to allow express to find the js file
 app.use(express.static('js'));
@@ -100,7 +97,14 @@ app.route('/EvalTool/:side?')
 app.route('/chat').get(function(req,res){
     res.render('CloudChat/index');
 });
-app.get('/Syllabus/*', syllabus.gettool);
+
+app.get('/schedule',function(req,res){
+    res.render('Schedule/index');
+});
+
+app.get('/schedule/421',function(req,res){
+    res.json(schedule);
+});
 
 app.listen(8080, function () {
     console.log('Server running at http://127.0.0.1:8080/');

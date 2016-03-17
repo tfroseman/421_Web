@@ -1,0 +1,42 @@
+extends ../layout
+block append js
+    script(src='https://code.jquery.com/jquery-2.2.1.min.js')
+    script.
+        window.onload = function () {
+            $.get("/schedule/421", function (data) {
+                $('#cframe').append("<table></table>");
+                console.log(data.schedule);
+                $('table').append("<tr id='header'></tr>");
+                for (var key in data.schedule) {
+                    $('#header').append("<th>" + key + "</th>");
+                }
+
+                for (var i =0; i < data.schedule.Class_Number.length; i++) {
+                    $('table').append("<tr id='r"+i+"'></tr>")
+                    var marker = '#r'+i;
+                    $(marker).append("<td>" + data.schedule.Class_Number[i] + "</td>");
+                    $(marker).append("<td>" + data.schedule.Date[i] + "</td>");
+                    $(marker).append("<td>" + data.schedule.Tag[i] + "</td>");
+                    if(data.schedule.Notes[i].charAt(0) == "Q") {
+                        $(marker).append("<td class='red'>" + data.schedule.Topic[i] + "</td>");
+                        $(marker).append("<td class='red'>" + data.schedule.Project[i] + "</td>");
+                        $(marker).append("<td class='red text-red'>" + data.schedule.Notes[i] + "</td>");
+                    }else{
+                        $(marker).append("<td >" + data.schedule.Topic[i] + "</td>");
+                        $(marker).append("<td >" + data.schedule.Project[i] + "</td>");
+                        $(marker).append("<td >" + data.schedule.Notes[i] + "</td>");
+                    }
+                    //$(marker).append("<td>" + data.schedule.Reminder[i] + "</td>");
+                }
+
+            });
+        };
+
+block side_nav
+    #sidenavigation
+        #sframe
+            include side
+
+block content
+    #content
+        #cframe
