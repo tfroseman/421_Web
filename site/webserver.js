@@ -106,6 +106,12 @@ app.get('/schedule/421',function(req,res){
     res.json(schedule);
 });
 
+app.get('/CanvasAnimation/Relax', function (req, res) {
+    res.render('CanvasAnimation/index');
+});
+
+
+
 app.listen(8080, function () {
     console.log('Server running at http://127.0.0.1:8080/');
 });
