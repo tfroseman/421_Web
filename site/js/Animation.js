@@ -141,9 +141,21 @@ window.setInterval(function() {
     while(theta >= 2 * Math.PI)
         theta -= 2 * Math.PI;
 
+    document.getElementById('carousel').style.transform = "rotateY("+theta*10+"deg)";
+
     for (var i = 0; i < canvases.length; i++) {
         var canvas = canvases[i];
+        canvas.style.transform = " translateZ( 0px )";
         canvas.style.transform = "rotateY("+theta*10+"deg)";
+        canvas.style.transform =  canvas.style.transform + " translateZ( 288px )";
+
+
+    }
+
+    for (var i = 0; i < canvases_offset.length; i++) {
+        //var canvas_offset = canvases_offset[i];
+        //canvas_offset.style.transform = "rotateY("+theta*10+"deg), translateZ( 288px )";
+
     }
     //drawShear(1, Math.cos(theta), Math.sin(theta) / 9);
     lastTime = when;
