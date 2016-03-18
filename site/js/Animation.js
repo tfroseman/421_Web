@@ -23,16 +23,16 @@ function draw() {
 }
  */
 var img = new Image();
-var canvas = document.getElementById("flagAnimation");
+
 // User Variables - customize these to change the image being scrolled, its
 // direction, and the speed.
 
-img.src = 'https://mdn.mozillademos.org/files/4553/Capitan_Meadows,_Yosemite_National_Park.jpg';
-var CanvasXSize = 800;
-var CanvasYSize = 200;
+img.src = '/Brit.png';
+var CanvasXSize = 500;
+var CanvasYSize = 260;
 var speed = 30; //lower is faster
-var scale = 1.05;
-var y = -4.5; //vertical offset
+var scale = 1.0;
+var y = 0; //vertical offset
 
 // Main program
 
@@ -53,7 +53,7 @@ img.onload = function() {
     if (imgH > CanvasYSize) { clearY = imgH; } // image larger than canvas
     else { clearY = CanvasYSize; }
     //Get Canvas Element
-    ctx = document.getElementById('canvas').getContext('2d');
+    ctx = document.getElementById('flagAnimation').getContext('2d');
     //Set Refresh Rate
     return setInterval(draw, speed);
 }
