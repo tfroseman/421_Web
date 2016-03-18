@@ -3,10 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <script src="/Animation.js"></script>
+    <style rel="stylesheet" type="text/css">
+        .container {
+            width: 210px;
+            height: 140px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        #carousel, #carousel2 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+        }
+
+        #carousel canvas, #carousel2 canvas {
+            margin: 0;
+            display: block;
+            position: absolute;
+            width: 186px;
+            height: 116px;
+            left: 10px;
+            top: 10px;
+            border: 2px solid black;
+        }
+
+        #carousel canvas:nth-child(1) { transform: rotateY(   0deg ) translateZ( 288px ); }
+        #carousel canvas:nth-child(2) { transform: rotateY(  72deg ) translateZ( 288px ); }
+        #carousel canvas:nth-child(3) { transform: rotateY(  144deg ) translateZ( 288px ); }
+        #carousel canvas:nth-child(4) { transform: rotateY( 216deg ) translateZ( 288px ); }
+        #carousel canvas:nth-child(5) { transform: rotateY( 288deg ) translateZ( 288px ); }
+    </style>
+    <script>
+        window.onload = (function (){
+            init();
+
+        });
+    </script>
 </head>
 <body>
 <p>Animation goes here</p>
-<canvas id ="flagAnimation"></canvas>
-<script src="Animation.js"></script>
+<div class="container" style="right: -100px;">
+    <div id="carousel">
+        <canvas class="rotate" ></canvas>
+        <canvas class="rotate_offset"></canvas>
+        <canvas class="rotate" ></canvas>
+        <canvas class="rotate_offset" ></canvas>
+        <canvas class="rotate" ></canvas>
+    </div>
+</div>
+
+<img src="/Brit.png" id="brit">
+<img src="/USA.png" id="usa">
+
+
+
+
 </body>
 </html>
