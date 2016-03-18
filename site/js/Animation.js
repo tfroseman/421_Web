@@ -23,16 +23,18 @@ function draw() {
 }
  */
 var img = new Image();
-//var canvas = document.getElementById("flagAnimation");
+
 // User Variables - customize these to change the image being scrolled, its
 // direction, and the speed.
 
 img.src = '/Brit.png';
-var CanvasXSize = 800;
-var CanvasYSize = 200;
+
+var CanvasXSize = 500;
+var CanvasYSize = 260;
+
 var speed = 30; //lower is faster
-var scale = 1.05;
-var y = -4.5; //vertical offset
+var scale = 1.0;
+var y = 0; //vertical offset
 
 // Main program
 
@@ -53,7 +55,11 @@ img.onload = function() {
     if (imgH > CanvasYSize) { clearY = imgH; } // image larger than canvas
     else { clearY = CanvasYSize; }
     //Get Canvas Element
+<<<<<<< HEAD
+    ctx = document.getElementById('flagAnimation').getContext('2d');
+=======
     ctx = canvas.getContext('2d');
+>>>>>>> 38a10119d33f4b69652ffa625da877e30f9a2c26
     //Set Refresh Rate
     return setInterval(draw, speed);
 }

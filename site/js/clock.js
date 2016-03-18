@@ -1,6 +1,6 @@
 /**
  * Created by thomasroseman on 1/29/16.
-
+// <-----------OLD CODE--------------------------------->
 function clock(){
     //Get new date object
     var date = new Date();
