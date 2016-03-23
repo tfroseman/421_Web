@@ -106,7 +106,7 @@ app.get('/schedule/421',function(req,res){
     res.json(schedule);
 });
 
-app.get('/CanvasAnimation/Relax', function (req, res) {
+app.get('/relax', function (req, res) {
     res.render('CanvasAnimation/index');
 });
 
