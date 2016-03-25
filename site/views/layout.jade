@@ -5,6 +5,7 @@ html(lang='en')
             link(href='webhome.css', rel='stylesheet', type='text/css')
             link(href='threeregion.css', rel='stylesheet', type='text/css')
             link(href='clock.css', rel='stylesheet', type='text/css')
+
         block js
             script(type='text/javascript').
                 function modifySideBar(node) {
@@ -37,6 +38,7 @@ html(lang='en')
             title Web Applications At PSU Behrend
 
     body
+        img(id="pslogo", src="penn_state.png", alt="Penn State", height="200px", width="300px")
         #navigationbar
             a(href='/')
                 img(src='logo.png', alt='webapplication logo')
@@ -53,15 +55,11 @@ html(lang='en')
                 a(href='/schedule', id='schedule') Schedule
                 span.topnavigationlink
                     a(href ='/CanvasAnimation/Relax', id='relax') Relax
+            span.topnavigationlink
+                    a(href ='/LectureNotes/lecturenotes', id='lecture') Lecture Notes
 
-            #clock(style={width:'10rem', float:'right'})
-                #hour.clock-digital 12
-                |:
-                #minute.clock-digital 12
-                |:
-                #second.clock-digital 12
-                |:
-                #ampm.clock-digital am
+
+            include Clock.html
 
 
         block side_nav
