@@ -4,7 +4,9 @@ html(lang='en')
         block css
             link(href='webhome.css', rel='stylesheet', type='text/css')
             link(href='threeregion.css', rel='stylesheet', type='text/css')
-            link(href='clock.css', rel='stylesheet', type='text/css')
+
+            link(href='clock.css', rel='stylesheet')
+            link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet', type='text/css')
 
         block js
             script(type='text/javascript').
@@ -33,7 +35,7 @@ html(lang='en')
                 };
 
             script(src='clock.js')
-
+            script(src='https://code.jquery.com/jquery-2.2.2.min.js',integrity='sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=', crossorigin='anonymous')
         block title
             title Web Applications At PSU Behrend
 
@@ -53,12 +55,29 @@ html(lang='en')
                 a(href='/evaltool', id='evaltool') EvalTool
             span.topnavigationlink
                 a(href='/schedule', id='schedule') Schedule
+<<<<<<< HEAD
                 span.topnavigationlink
                     a(href ='/LectureNotes/lecturenotes', id='lecture') Lecture Not
                     a(href ='/relax', id='relax') Relax
 
 
             include Clock.html
+=======
+            span.topnavigationlink
+                a(href ='/relax', id='relax') Relax
+
+            span.topnavigationlink
+                a(href ='/notes', id='notes') Notes
+
+            #clock(style={width: '10rem', float: 'right'})
+                #hour.clock-digital 12
+                | :
+                #minute.clock-digital 12
+                | :
+                #second.clock-digital 12
+                | :
+                #ampm.clock-digital am
+>>>>>>> 630c2052fd6618f8f981c8b5bebc0fafc29c5d16
 
 
         block side_nav

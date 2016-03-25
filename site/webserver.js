@@ -110,6 +110,10 @@ app.get('/relax', function (req, res) {
     res.render('CanvasAnimation/index');
 });
 
+app.get('/notes', function (req, res) {
+    res.render('LectureNotes/index');
+});
+
 
 
 app.listen(8080, function () {
