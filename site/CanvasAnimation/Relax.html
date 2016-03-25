@@ -30,14 +30,28 @@
             border: 2px solid black;
         }
 
-        #carousel canvas:nth-child(1) { transform: rotateY(   0deg ) translateZ( 288px ); }
-        #carousel canvas:nth-child(2) { transform: rotateY(  72deg ) translateZ( 288px ); }
-        #carousel canvas:nth-child(3) { transform: rotateY(  144deg ) translateZ( 288px ); }
-        #carousel canvas:nth-child(4) { transform: rotateY( 216deg ) translateZ( 288px ); }
-        #carousel canvas:nth-child(5) { transform: rotateY( 288deg ) translateZ( 288px ); }
+        #carousel canvas:nth-child(1), #carousel2 canvas:nth-child(1) {
+            transform: rotateY(0deg) translateZ(288px);
+        }
+
+        #carousel canvas:nth-child(2),#carousel2 canvas:nth-child(2) {
+            transform: rotateY(72deg) translateZ(288px);
+        }
+
+        #carousel canvas:nth-child(3), #carousel canvas:nth-child(3) {
+            transform: rotateY(144deg) translateZ(288px);
+        }
+
+        #carousel canvas:nth-child(4), #carousel2 canvas:nth-child(4) {
+            transform: rotateY(216deg) translateZ(288px);
+        }
+
+        #carousel canvas:nth-child(5), #carousel2 canvas:nth-child(5) {
+            transform: rotateY(288deg) translateZ(288px);
+        }
     </style>
     <script>
-        window.onload = (function (){
+        window.onload = (function () {
             init();
 
         });
@@ -45,21 +59,25 @@
 </head>
 <body>
 <p>Animation goes here</p>
-<div class="container" style="right: -100px;">
+<div class="container" style="left: 400px;">
     <div id="carousel">
-        <canvas class="rotate" ></canvas>
+        <canvas class="rotate"></canvas>
         <canvas class="rotate_offset"></canvas>
-        <canvas class="rotate" ></canvas>
-        <canvas class="rotate_offset" ></canvas>
-        <canvas class="rotate" ></canvas>
+        <canvas class="rotate"></canvas>
+        <canvas class="rotate_offset"></canvas>
+        <canvas class="rotate"></canvas>
     </div>
 </div>
-
+<div class="container" style="left: 400px;">
+    <div id="carousel2">
+        <canvas class="rotate"></canvas>
+        <canvas class="rotate_offset"></canvas>
+        <canvas class="rotate"></canvas>
+        <canvas class="rotate_offset"></canvas>
+        <canvas class="rotate"></canvas>
+    </div>
+</div>
 <img src="/Brit.png" id="brit">
 <img src="/USA.png" id="usa">
-
-
-
-
 </body>
 </html>

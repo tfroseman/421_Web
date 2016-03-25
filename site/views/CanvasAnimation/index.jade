@@ -1,1 +1,18 @@
-include ../../CanvasAnimation/Relax.html
+//include ../../CanvasAnimation/Relax.html
+
+extends ../layout
+
+block append js
+    script.
+        window.onload = (function () {
+            init();
+
+        });
+    script(src='/Animation.js')
+
+block append css
+    link(rel='stylesheet', type='text/css', href='/relax.css')
+block content
+    #content
+        #cframe
+            include content
