@@ -1,0 +1,15 @@
+extends ../layout
+
+block append js
+    script(src='/LectureNotes.js')
+    script.
+        window.onload = function() {
+            start_db();
+        }
+
+block append css
+
+block content
+    #content
+        #cframe
+            include content

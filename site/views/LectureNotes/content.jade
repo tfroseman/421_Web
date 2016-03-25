@@ -1,0 +1,37 @@
+.container
+    br
+    .row
+        .col-lg-12
+
+
+            button.btn.btn-primary#delete_notes(type='button') Delete Notes
+
+            button.btn.btn-primary#View(type='button') View Notes
+    .row
+        .col-lg-12
+
+                label Lecture ID
+                    input(type='text')#lecture_id
+
+                label Slide ID
+                    input(type='text')#slide_id
+
+                label Notes
+                    textarea.form-control#note_text
+    .row
+        .col-lg-12
+                button.btn.btn-primary#add_notes(type='button', onclick='write_note();') Add Note
+
+
+    br
+    .row
+        table.table.table-striped
+            thead
+                tr
+                    th Lecture ID
+                    th Slide ID
+                    th Note ID
+                    th Note
+                    th Delete
+            tbody
+
