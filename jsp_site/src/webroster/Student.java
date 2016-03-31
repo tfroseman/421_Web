@@ -50,4 +50,14 @@ public class Student implements Serializable {
         this.psu_id = psu_id;
         this.team = team;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", psu_id='" + psu_id + '\'' +
+                ", team='" + team + '\'' +
+                '}';
+    }
 }

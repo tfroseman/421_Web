@@ -1,10 +1,7 @@
 package webroster;
 
 
-import java.beans.XMLEncoder;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -14,8 +11,10 @@ import javax.servlet.ServletContext;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Roster implements Serializable {
-    private ArrayList<Student> roster;
+import static java.lang.System.in;
+
+public class Roster {
+    private ArrayList<Student> roster = new ArrayList<>();
     private List<String> lines;
     private ServletContext servletContext;
 
@@ -27,68 +26,76 @@ public class Roster implements Serializable {
     public Roster() {
     }
 
-    public void setServletContext(ServletContext servletContext){
+    public void setServletContext(ServletContext servletContext) {
         this.servletContext = servletContext;
     }
 
-    public ServletContext getServletContext(){
+    public ServletContext getServletContext() {
         return this.servletContext;
     }
 
-    public String getRoster(){
-        if(getServletContext() == null){
+    public ArrayList getRoster() {
+        populate();
+
+        if (getServletContext() == null) {
             return null;
         }
 
-        if(roster == null){
-            populate();
-        }
 
-        return toXML(roster);
+        return roster;
     }
 
     private void populate() {
-        Path path = FileSystems.getDefault().getPath("Roster.txt");
-        System.out.println(path.toString());
+        InputStream inputStream = servletContext.getResourceAsStream("/Users/thomasroseman/Code/Class/421_Web/jsp_site/src/webroster/Roster.txt");
+        Path path = FileSystems.getDefault().getPath("/Users/thomasroseman/Code/Class/421_Web/jsp_site/src/webroster/Roster.txt");
+
+        if (inputStream != null) {
+            try {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                int i = 0;
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    if (i % 5 == 0) {
+                        this.l_name = line;
+                    } else if (i % 5 == 1) {
+                        this.f_name = line;
+                    } else if (i % 5 == 2) {
+                        this.psu_id = line;
+                    } else if (i % 5 == 3) {
+                        this.team = line;
+                    } else {
+                        this.roster.add(new Student(this.f_name, this.l_name, this.psu_id, this.team));
+                    }
+                    i++;
+                }
+            } catch (IOException e) {
+
+            }
+        }
         try {
-            lines = Files.readAllLines(path, Charset.defaultCharset());
+            this.lines = Files.readAllLines(path, Charset.defaultCharset());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(lines != null) {
-            for (int i = 5; i < lines.size(); i++) {
 
-                if (i % 5 == 0) {
-                    l_name = lines.get(i);
-                } else if (i % 5 == 1) {
-                    f_name = lines.get(i);
-                } else if (i % 5 == 2) {
-                    psu_id = lines.get(i);
-                } else if (i % 5 == 3) {
-                    team = lines.get(i);
-                }
+        System.out.println(lines.size());
+        for (int i = 5; i < this.lines.size(); i++) {
 
-                if (i % 5 == 4) {
-                    roster.add(new Student(f_name, l_name, psu_id, team));
-                }
+            if (i % 5 == 0) {
+                this.l_name = lines.get(i);
+            } else if (i % 5 == 1) {
+                this.f_name = lines.get(i);
+            } else if (i % 5 == 2) {
+                this.psu_id = lines.get(i);
+            } else if (i % 5 == 3) {
+                this.team = lines.get(i);
+            }else{
+                this.roster.add(new Student(this.f_name, this.l_name, this.psu_id, this.team));
             }
-        }else{
-            System.out.println("Is null");
         }
 
     }
 
-    private String toXML(ArrayList roster) {
-        String xml = null;
-        try {
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            XMLEncoder encoder = new XMLEncoder(out);
-            encoder.writeObject(roster); // serialize to XML
-            encoder.close();
-            xml = out.toString(); // stringify
-        }
-        catch(Exception e) { }
-        //System.out.println(xml.trim());
-        return xml;
-    }
 }
