@@ -1,0 +1,23 @@
+extends ../layout
+block append js
+    script(src='/sortable.js')
+    script.
+        document.onload = function() {
+
+        }
+
+        function loadroster() {
+            $.get('http://localhost:8081/roster', function (data) {
+                $('#cframe').html(data);
+            });
+        }
+
+
+
+block side_nav
+    #sidenavigation
+        #sframe
+            include side
+block content
+    #content
+        #cframe
