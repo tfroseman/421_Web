@@ -40,7 +40,6 @@ html(lang='en')
             title Web Applications At PSU Behrend
 
     body
-        img(id="pslogo", src="penn_state.png", alt="Penn State", height="200px", width="300px")
         #navigationbar
             a(href='/')
                 img(src='logo.png', alt='webapplication logo')
@@ -55,14 +54,8 @@ html(lang='en')
                 a(href='/evaltool', id='evaltool') EvalTool
             span.topnavigationlink
                 a(href='/schedule', id='schedule') Schedule
-<<<<<<< HEAD
-                span.topnavigationlink
-                    a(href ='/LectureNotes/lecturenotes', id='lecture') Lecture Not
-                    a(href ='/relax', id='relax') Relax
-
-
-            include Clock.html
-=======
+            span.topnavigationlink
+                a(href ='/services', id='lecture') Roster
             span.topnavigationlink
                 a(href ='/relax', id='relax') Relax
 
@@ -77,8 +70,6 @@ html(lang='en')
                 #second.clock-digital 12
                 | :
                 #ampm.clock-digital am
->>>>>>> 630c2052fd6618f8f981c8b5bebc0fafc29c5d16
-
 
         block side_nav
         block content

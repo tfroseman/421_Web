@@ -114,8 +114,16 @@ app.get('/notes', function (req, res) {
     res.render('LectureNotes/index');
 });
 
+app.get('/services', function (req, res) {
+    res.render('Services/index');
+});
+
+app.get('/roster', function (req, res) {
+    res.redirect("http://localhost:8080/roster.jsp");
+});
 
 
-app.listen(8080, function () {
-    console.log('Server running at http://127.0.0.1:8080/');
+
+app.listen(8081, function () {
+    console.log('Server running at http://127.0.0.1:8081/');
 });
