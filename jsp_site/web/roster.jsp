@@ -1,9 +1,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="webroster.Student" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>$Title$</title>
+    <script src="sorttable.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
@@ -13,7 +15,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <table class="table table-striped">
+        <table class="table table-striped sortable">
             <thead>
             <tr>
                 <th>First Name</th>
