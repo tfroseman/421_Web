@@ -1,4 +1,4 @@
 .idea/
 node_modules/
-out/
-lib/
+jsp_site/out/
+jsp_site/lib/
