@@ -2,26 +2,15 @@
 <%@ page import="webroster.Student" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
-<head>
-    <title>$Title$</title>
-    <script src="sorttable.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-</head>
-<body>
 <div class="container">
     <div class="row">
-        <table class="table table-striped sortable">
+        <table id="roster" class="table table-striped sortable">
             <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>PSU ID</th>
-                <th>Team</th>
+                <th id="first_name" class="table_header">First Name</th>
+                <th id="last_name" class="table_header">Last Name</th>
+                <th id="psu_id" class="table_header">PSU ID</th>
+                <th id="team" class="table_header">Team</th>
             </tr>
             </thead>
             <tbody>
@@ -54,5 +43,3 @@
     </div>
 
 </div>
-</body>
-</html>
